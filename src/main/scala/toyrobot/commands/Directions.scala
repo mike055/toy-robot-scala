@@ -6,23 +6,22 @@ package object Directions {
 
   def moveLeft(robot: Option[Robot]): Option[Robot] = {
     robot.map( (r: Robot) => {
-      r.currentlyFacing match {
-        case North => Robot(r.currentPositionX, r.currentPositionY, West)
-        case East => Robot(r.currentPositionX, r.currentPositionY, North)
-        case South => Robot(r.currentPositionX, r.currentPositionY, East)
-        case West => Robot(r.currentPositionX, r.currentPositionY, South)
-      }
+      Robot(r.currentPositionX, r.currentPositionY, getNextDirections(r.currentlyFacing)._1)
     })
   }
 
   def moveRight(robot: Option[Robot]): Option[Robot] = {
     robot.map((r: Robot) => {
-      r.currentlyFacing match {
-        case North => Robot(r.currentPositionX, r.currentPositionY, East)
-        case East => Robot(r.currentPositionX, r.currentPositionY, South)
-        case South => Robot(r.currentPositionX, r.currentPositionY, West)
-        case West => Robot(r.currentPositionX, r.currentPositionY, North)
-      }
+      Robot(r.currentPositionX, r.currentPositionY, getNextDirections(r.currentlyFacing)._2)
     })
+  }
+
+  def getNextDirections(facing: Direction): (Direction, Direction) = {
+    facing match {
+      case North => (West, East)
+      case East => (North, South)
+      case South => (East, West)
+      case West => (South, North)
+    }
   }
 }
