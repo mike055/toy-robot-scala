@@ -2,7 +2,7 @@ package toyrobot.commands
 
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.FunSpec
-import toyrobot.models.{PlacedRobot, Table, UnPlacedRobot}
+import toyrobot.models.{Robot, Table}
 
 
 class PlaceTest extends FunSpec with TypeCheckedTripleEquals {
@@ -13,16 +13,16 @@ class PlaceTest extends FunSpec with TypeCheckedTripleEquals {
     describe("when a valid place on the table") {
       it("returns a placed robot") {
 
-        val result = Place.placeRobot(PlaceArgs(1, 1, North), UnPlacedRobot(), Table(5, 5))
-        assert(result === PlacedRobot(1, 1, North))
+        val result = Place.placeRobot(PlaceArgs(1, 1, North), None, Table(5, 5))
+        assert(result === Some(Robot(1, 1, North)))
       }
     }
 
     describe("when an invalid place on the table") {
       it("returns an unplaced robot") {
 
-        val result = Place.placeRobot(PlaceArgs(0, 0, North), UnPlacedRobot(), Table(5, 5))
-        assert(result === UnPlacedRobot())
+        val result = Place.placeRobot(PlaceArgs(6, 6, North), None, Table(5, 5))
+        assert(result === None)
       }
     }
   }

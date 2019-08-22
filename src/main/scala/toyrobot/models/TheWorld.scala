@@ -1,3 +1,3 @@
 package toyrobot.models
 
-case class TheWorld(table: Table, robot: Robot)
+case class TheWorld(table: Table, robot: Option[Robot])

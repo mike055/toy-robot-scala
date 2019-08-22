@@ -1,19 +1,18 @@
 package toyrobot.commands
 
-import toyrobot.models.{PlacedRobot, Robot, Table, UnPlacedRobot}
+import toyrobot.models.{Robot, Table}
 
 package object Move {
 
-  def moveRobot(robot: Robot, table: Table): Robot = {
-    robot match {
-      case (UnPlacedRobot()) => UnPlacedRobot()
-      case (PlacedRobot(x, y, facing)) => facing match {
-        case North => moveNorth(x, y, facing, table)
-        case South => moveSouth(x, y, facing, table)
-        case East => moveEast(x, y, facing, table)
-        case West => moveWest(x, y, facing, table)
+  def moveRobot(robot: Option[Robot], table: Table): Option[Robot] = {
+    robot.map( (r: Robot) => {
+      r.currentlyFacing match {
+        case North => moveNorth(r.currentPositionX, r.currentPositionY, r.currentlyFacing, table)
+        case South => moveSouth(r.currentPositionX, r.currentPositionY, r.currentlyFacing, table)
+        case East => moveEast(r.currentPositionX, r.currentPositionY, r.currentlyFacing, table)
+        case West => moveWest(r.currentPositionX, r.currentPositionY, r.currentlyFacing, table)
       }
-    }
+    })
   }
 
   // Have a position type (x,y) and a function to return a movement vector based on Facing direction
@@ -24,10 +23,10 @@ package object Move {
     val nextY = y + 1
 
     if (Position.positionIsValid(nextX, nextY, table)) {
-      PlacedRobot(nextX, nextY, facing)
+      Robot(nextX, nextY, facing)
     }
     else {
-      PlacedRobot(x, y, facing)
+      Robot(x, y, facing)
     }
   }
 
@@ -36,10 +35,10 @@ package object Move {
     val nextY = y - 1
 
     if (Position.positionIsValid(nextX, nextY, table)) {
-      PlacedRobot(nextX, nextY, facing)
+      Robot(nextX, nextY, facing)
     }
     else {
-      PlacedRobot(x, y, facing)
+      Robot(x, y, facing)
     }
   }
 
@@ -49,10 +48,10 @@ package object Move {
     val nextY = y
 
     if (Position.positionIsValid(nextX, nextY, table)) {
-      PlacedRobot(nextX, nextY, facing)
+      Robot(nextX, nextY, facing)
     }
     else {
-      PlacedRobot(x, y, facing)
+      Robot(x, y, facing)
     }
   }
 
@@ -61,10 +60,10 @@ package object Move {
     val nextY = y
 
     if (Position.positionIsValid(nextX, nextY, table)) {
-      PlacedRobot(nextX, nextY, facing)
+      Robot(nextX, nextY, facing)
     }
     else {
-      PlacedRobot(x, y, facing)
+      Robot(x, y, facing)
     }
   }
 }

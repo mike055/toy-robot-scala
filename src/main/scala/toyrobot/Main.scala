@@ -1,7 +1,7 @@
 package toyrobot
 
 import toyrobot.commands.{Command, CommandExecutor}
-import toyrobot.models.{Robot, Table, TheWorld, UnPlacedRobot}
+import toyrobot.models.{Robot, Table, TheWorld}
 import toyrobot.parser.CommandParser
 
 object Main {
@@ -33,7 +33,7 @@ object Main {
 //        ) //0,0,WEST
 
 
-    val robot: Robot = UnPlacedRobot()
+    val robot: Option[Robot] = None
     val table: Table = Table(5, 5)
 
     val theWorld = TheWorld(table, robot)
@@ -43,7 +43,7 @@ object Main {
     parsedCommands.foldLeft(theWorld)(movePerformCommand)
 
   }
-
+  
   def movePerformCommand(theCurrentWorld: TheWorld, command: Option[Command]): TheWorld = {
     command match {
       case Some(command) => {

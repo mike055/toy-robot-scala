@@ -1,13 +1,13 @@
 package toyrobot.commands
 
-import toyrobot.models.{Robot, UnPlacedRobot, PlacedRobot}
+import toyrobot.models.Robot
 
 package object Report {
 
-  def reportRobotPosition(robot: Robot): Option[String] = {
+  def reportRobotPosition(robot: Option[Robot]): Option[String] = {
     robot match {
-      case UnPlacedRobot() => None
-      case PlacedRobot(x, y, facing) => Some(s"$x,$y,$facing")
+      case None => None
+      case Some(Robot(x, y, facing)) => Some(s"${x},${y},${facing}")
     }
   }
 }
