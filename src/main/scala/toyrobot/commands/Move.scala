@@ -22,48 +22,27 @@ package object Move {
     val nextX = x
     val nextY = y + 1
 
-    if (Position.positionIsValid(nextX, nextY, table)) {
-      Robot(nextX, nextY, facing)
-    }
-    else {
-      Robot(x, y, facing)
-    }
+    Robot(nextX, nextY, facing)
   }
 
   def moveSouth(x: Int, y: Int, facing: Direction, table: Table): Robot = {
     val nextX = x
     val nextY = y - 1
 
-    if (Position.positionIsValid(nextX, nextY, table)) {
-      Robot(nextX, nextY, facing)
-    }
-    else {
-      Robot(x, y, facing)
-    }
+    Robot(nextX, nextY, facing)
   }
 
   def moveEast(x: Int, y: Int, facing: Direction, table: Table): Robot = {
-
     val nextX = x + 1
     val nextY = y
 
-    if (Position.positionIsValid(nextX, nextY, table)) {
-      Robot(nextX, nextY, facing)
-    }
-    else {
-      Robot(x, y, facing)
-    }
+    Robot(nextX, nextY, facing)
   }
 
   def moveWest(x: Int, y: Int, facing: Direction, table: Table): Robot = {
     val nextX = x - 1
     val nextY = y
 
-    if (Position.positionIsValid(nextX, nextY, table)) {
-      Robot(nextX, nextY, facing)
-    }
-    else {
-      Robot(x, y, facing)
-    }
+    Robot(nextX, nextY, facing)
   }
 }

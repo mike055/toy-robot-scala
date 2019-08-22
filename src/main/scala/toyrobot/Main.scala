@@ -10,15 +10,15 @@ object Main {
 
     //maybe filter out invalid commands early
 
-    val commands = List(
-      "PLACE 1,2,EAST",
-      "GUFF",
-      "MOVE",
-      "MOVE",
-      "LEFT",
-      "MOVE",
-      "REPORT"
-    ) //3,3,NORTH
+//    val commands = List(
+//      "PLACE 1,2,EAST",
+//      "GUFF",
+//      "MOVE",
+//      "MOVE",
+//      "LEFT",
+//      "MOVE",
+//      "REPORT"
+//    ) //3,3,NORTH
 
 //    val commands = List(
 //      "PLACE 0,0,NORTH",
@@ -31,6 +31,54 @@ object Main {
 //          "LEFT",
 //          "REPORT"
 //        ) //0,0,WEST
+
+
+    val commands = List(
+      "MOVE",
+      "LEFT",
+      "RIGHT",
+      "REPORT",
+      "PLACE 1,2,EAST",
+      "GUFF",
+      "MOVE",
+      "MOVE",
+      "LEFT",
+      "MOVE",
+      "REPORT",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "REPORT",
+      "RIGHT",
+      "REPORT",
+      "MOVE",
+      "MOVE",
+      "REPORT",
+      "RIGHT",
+      "REPORT",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "REPORT",
+      "RIGHT",
+      "REPORT",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "MOVE",
+      "REPORT"
+    )
+    //3,3,NORTH
+    //3,4,NORTH
+    //3,4,EAST
+    //4,4,EAST
+    //4,0,SOUTH
+    //4,0,WEST
+    //0,0,WEST
 
 
     val robot: Option[Robot] = None

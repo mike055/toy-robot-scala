@@ -16,7 +16,7 @@ package object CommandExecutor {
     //if valid return new world
     //if not valid return the old world
 
-    command match {
+    val result = command match {
       case PlaceCommand(args) =>
         (theCurrentWorld.copy(robot = Place.placeRobot(args, theCurrentWorld.robot, theCurrentWorld.table)), None)
       case MoveCommand =>
@@ -28,6 +28,13 @@ package object CommandExecutor {
       case ReportCommand =>
         (theCurrentWorld, Report.reportRobotPosition(theCurrentWorld.robot))
       case _ => (theCurrentWorld, None)
+    }
+
+    if (Validation.isCurrentWorldValid(result._1)) {
+      result
+    }
+    else {
+      (theCurrentWorld, None)
     }
   }
 }
