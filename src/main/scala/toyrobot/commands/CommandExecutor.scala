@@ -1,7 +1,6 @@
 package toyrobot.commands
 
-import toyrobot.models.{TheWorld, Robot, Table}
-
+import toyrobot.models.{TheWorld}
 package object CommandExecutor {
 
 
@@ -27,6 +26,20 @@ package object CommandExecutor {
         (theCurrentWorld.copy(robot = Directions.moveRight(theCurrentWorld.robot)), None)
       case ReportCommand =>
         (theCurrentWorld, Report.reportRobotPosition(theCurrentWorld.robot))
+      case PlaceObjectCommand => {
+        val objectPosition = Objects.getObjectPosition(theCurrentWorld)
+
+        objectPosition match {
+          case None => (theCurrentWorld, None)
+          case Some( (x, y) ) => {
+            val newObjectsList = theCurrentWorld.table.objects :+ (x, y)
+            val newTable = theCurrentWorld.table.copy(objects = newObjectsList)
+
+            (theCurrentWorld.copy(table = newTable), None)
+          }
+        }
+      }
+
       case _ => (theCurrentWorld, None)
     }
 

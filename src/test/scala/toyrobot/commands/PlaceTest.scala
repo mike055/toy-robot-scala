@@ -6,14 +6,14 @@ import toyrobot.models.{Robot, Table}
 
 
 class PlaceTest extends FunSpec with TypeCheckedTripleEquals {
-  val testTable = Table(5,5)
+  val testTable = Table(5,5,List())
 
   describe("placeRobot") {
 
     describe("when a valid place on the table") {
       it("returns a placed robot") {
 
-        val result = Place.placeRobot(PlaceArgs(1, 1, North), None, Table(5, 5))
+        val result = Place.placeRobot(PlaceArgs(1, 1, North), None, Table(5, 5,List()))
         assert(result === Some(Robot(1, 1, North)))
       }
     }

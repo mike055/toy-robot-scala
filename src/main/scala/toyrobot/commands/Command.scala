@@ -9,6 +9,7 @@ case object West extends Direction
 case class PlaceArgs(x: Int, y: Int, facing: Direction)
 
 sealed trait Command
+case object PlaceObjectCommand extends Command
 case object MoveCommand extends Command
 case object LeftCommand extends Command
 case object RightCommand extends Command

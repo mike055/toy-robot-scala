@@ -7,7 +7,7 @@ import toyrobot.models.Table
 
 
 class MoveTest extends FunSpec with TypeCheckedTripleEquals {
-  val testTable = Table(5,5)
+  val testTable = Table(5,5,List())
 
   describe("moveRobot") {
 

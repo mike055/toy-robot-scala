@@ -136,6 +136,36 @@ class CommandParserTest extends FunSpec with TypeCheckedTripleEquals {
       }
     }
 
+    describe("place object command") {
+      describe("when string is PLACE_OBJECT") {
+        it("should return place object command") {
+          val result = parsedCommandOrNothing("PLACE_OBJECT")
+          assert(result === Some(PlaceObjectCommand))
+        }
+      }
+
+      describe("when string is PLACE_OBJECT with trailing spaces") {
+        it("should return right command") {
+          val result = parsedCommandOrNothing("PLACE_OBJECT ")
+          assert(result === Some(PlaceObjectCommand))
+        }
+      }
+
+      describe("when string is PLACE_OBJECT with leading spaces") {
+        it("should return right command") {
+          val result = parsedCommandOrNothing(" PLACE_OBJECT")
+          assert(result === Some(PlaceObjectCommand))
+        }
+      }
+
+      describe("when string contains PLACE_OBJECT and other characters") {
+        it("should return none") {
+          val result = parsedCommandOrNothing("I WANT TO PLACE_OBJECT PLEASE")
+          assert(result === None)
+        }
+      }
+    }
+
     describe("place command") {
       describe("when string is PLACE 1,2,EAST") {
         it("should return place command with args") {

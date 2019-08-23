@@ -70,6 +70,18 @@ object Main {
       "MOVE",
       "MOVE",
       "MOVE",
+      "REPORT",
+      "RIGHT",
+      "RIGHT",
+      "REPORT",
+      "PLACE_OBJECT",
+      "MOVE",
+      "REPORT",
+      "RIGHT",
+      "REPORT",
+      "PLACE_OBJECT",
+      "PLACE_OBJECT",
+      "MOVE",
       "REPORT"
     )
     //3,3,NORTH
@@ -79,10 +91,14 @@ object Main {
     //4,0,SOUTH
     //4,0,WEST
     //0,0,WEST
+    //0,0,EAST
+    //0,0,EAST
+    //0,0,SOUTH
+    //0,0,SOUTH
 
 
     val robot: Option[Robot] = None
-    val table: Table = Table(5, 5)
+    val table: Table = Table(5, 5, List())
 
     val theWorld = TheWorld(table, robot)
 

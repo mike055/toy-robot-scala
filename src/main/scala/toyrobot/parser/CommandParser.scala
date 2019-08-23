@@ -10,6 +10,7 @@ object CommandParser {
       case "LEFT" => Some(LeftCommand)
       case "RIGHT" => Some(RightCommand)
       case "REPORT" => Some(ReportCommand)
+      case "PLACE_OBJECT" => Some(PlaceObjectCommand)
       case _ => makePlaceCommandOrNothing(command)
     }
   }
