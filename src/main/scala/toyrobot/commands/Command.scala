@@ -15,4 +15,5 @@ case object LeftCommand extends Command
 case object RightCommand extends Command
 case object ReportCommand extends Command
 case class PlaceCommand(args: PlaceArgs) extends Command
+case object MapCommand extends Command
 

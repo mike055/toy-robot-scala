@@ -26,6 +26,8 @@ package object CommandExecutor {
         (theCurrentWorld.copy(robot = Directions.moveRight(theCurrentWorld.robot)), None)
       case ReportCommand =>
         (theCurrentWorld, Report.reportRobotPosition(theCurrentWorld.robot))
+      case MapCommand =>
+        (theCurrentWorld, Some(Report.map(theCurrentWorld)))
       case PlaceObjectCommand => {
         val objectPosition = Objects.getObjectPosition(theCurrentWorld)
 

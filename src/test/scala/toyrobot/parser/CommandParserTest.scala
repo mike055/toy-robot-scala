@@ -136,6 +136,36 @@ class CommandParserTest extends FunSpec with TypeCheckedTripleEquals {
       }
     }
 
+    describe("map command") {
+      describe("when string is MAP") {
+        it("should return map command") {
+          val result = parsedCommandOrNothing("MAP")
+          assert(result === Some(MapCommand))
+        }
+      }
+
+      describe("when string is MAP with trailing spaces") {
+        it("should return map command") {
+          val result = parsedCommandOrNothing("MAP ")
+          assert(result === Some(MapCommand))
+        }
+      }
+
+      describe("when string is MAP with leading spaces") {
+        it("should return map command") {
+          val result = parsedCommandOrNothing(" MAP")
+          assert(result === Some(MapCommand))
+        }
+      }
+
+      describe("when string contains MAP and other characters") {
+        it("should return none") {
+          val result = parsedCommandOrNothing("I WANT TO MAP PLEASE")
+          assert(result === None)
+        }
+      }
+    }
+
     describe("place object command") {
       describe("when string is PLACE_OBJECT") {
         it("should return place object command") {

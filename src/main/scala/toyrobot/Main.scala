@@ -82,7 +82,8 @@ object Main {
       "PLACE_OBJECT",
       "PLACE_OBJECT",
       "MOVE",
-      "REPORT"
+      "REPORT",
+      "MAP"
     )
     //3,3,NORTH
     //3,4,NORTH
